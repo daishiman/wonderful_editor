@@ -24,6 +24,21 @@ module WonderfulEditor
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.generators do |g|
+      g.template_engine false #
+      g.javascripts false # javascripts ファイルを作成しない
+      g.stylesheets false # スタイルシート(CSS)を作成しない
+      g.helper false # helper を作成しない
+      g.test_framework :rspec, # テストファイルを作成する
+                       view_specs: false, # view の spec を作成しない
+                       routing_specs: false, # routing の spec を作成しない
+                       helper_specs: false, # helper の spec を作成しない
+                       controller_specs: false, # contoller の spec を作成しない
+                       request_specs: true # request の spec を作成する
+    end
+
+    config.api_only = true # 既存のアプリケーションを API 専用に変える
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:                     # 「サービス」を定義する項目
+ database:                    # "database" という名前で「サービス」を定義
+   image: postgres            # "postgres" の「イメージ」を使用
+   restart: always            # 自動起動の設定
+   ports:                     # ホストの「ポート番号」とコンテナーの「ポート番号」を対応付けを定義します
+     - 5432:5432              # ホストの「ポート番号」 5432 とコンテナーの「ポート番号」 5432 を対応付けます
+   environment:               # コンテナーに「環境変数」を設定します
+     POSTGRES_USER: root      # "POSTGRES_USER" という「環境変数」に "root" という値を設定します
+     POSTGRES_PASSWORD: root  # "POSTGRES_PASSWORD" という「環境変数」に "root" という値を設定します

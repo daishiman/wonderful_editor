@@ -37,6 +37,9 @@ group :development, :test do
   gem "rubocop-rails" # 追加
   gem "rubocop-rspec" # 追加
   gem 'rspec-rails', '~> 4.0.1' # 追加
+  gem 'factory_bot_rails' # 追加
+  gem 'faker' # 追加
+  gem "rspec-rails" # 追加
 end
 
 group :development do

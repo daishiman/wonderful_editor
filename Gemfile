@@ -36,10 +36,10 @@ group :development, :test do
   gem "pry-rails" # 追加
   gem "rubocop-rails" # 追加
   gem "rubocop-rspec" # 追加
-  gem 'rspec-rails', '~> 4.0.1' # 追加
   gem 'factory_bot_rails' # 追加
   gem 'faker' # 追加
-  gem "rspec-rails" # 追加
+  gem 'rspec-rails' # 追加
+  gem 'devise_token_auth' # 追加 「ユーザーの新規登録 / ログイン / ログアウト」の実装
 end
 
 group :development do

@@ -25,7 +25,7 @@ module WonderfulEditor
     config.load_defaults 6.0
 
     config.generators do |g|
-      g.template_engine false #
+      g.template_engine false #  HTML を作成しない
       g.javascripts false # javascripts ファイルを作成しない
       g.stylesheets false # スタイルシート(CSS)を作成しない
       g.helper false # helper を作成しない

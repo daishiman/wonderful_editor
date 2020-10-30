@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "2.7.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 6.0.3", ">= 6.0.3.3"
@@ -27,7 +27,8 @@ gem "turbolinks", "~> 5"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "active_model_serializers", "~> 0.10.0" # 追加
-gem "devise_token_auth" # 追加
+gem "devise_token_auth" # 追加 短い時間で各リクエストの token を整理する gem
+gem 'devise' #追加 「ユーザーの新規登録 / ログイン / ログアウト」の gem
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,7 +40,6 @@ group :development, :test do
   gem 'factory_bot_rails' # 追加
   gem 'faker' # 追加
   gem 'rspec-rails' # 追加
-  gem 'devise_token_auth' # 追加 「ユーザーの新規登録 / ログイン / ログアウト」の実装
 end
 
 group :development do

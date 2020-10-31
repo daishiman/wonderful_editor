@@ -30,6 +30,8 @@ gem "active_model_serializers", "~> 0.10.0" # 追加
 gem "devise_token_auth" # 追加 短い時間で各リクエストの token を整理する gem
 gem 'devise' #追加 「ユーザーの新規登録 / ログイン / ログアウト」の gem
 
+gem 'rack-cors', :require => 'rack/cors' # 追加 オリジン間リソース共有Cross-Origin Resource Sharing (CORS) の gem
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "pry-byebug" # 追加

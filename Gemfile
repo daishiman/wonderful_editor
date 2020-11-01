@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby "2.7.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.0.3.4", ">= 6.0.3.4"
+gem "rails", "~> 6.0.3.3", ">= 6.0.3.3"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 0.18", "< 2.0"
 # Use Puma as the app server
@@ -27,11 +27,8 @@ gem "turbolinks", "~> 5"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "active_model_serializers", "~> 0.10.0" # 追加
-
-gem "devise_token_auth" # 追加 token認証確認する gem
-gem 'devise' #追加 「ユーザーの新規登録 / ログイン / ログアウト」の gem
-
-gem 'rack-cors', :require => 'rack/cors' # 追加 オリジン間リソース共有Cross-Origin Resource Sharing (CORS) の gem
+gem "devise_token_auth" # 追加 token認証する gem
+gem "devise" # 「ユーザーの新規登録 / ログイン / ログアウト」の gem
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

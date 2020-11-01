@@ -27,7 +27,8 @@ gem "turbolinks", "~> 5"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "active_model_serializers", "~> 0.10.0" # 追加
-gem "devise_token_auth" # 追加 短い時間で各リクエストの token を整理する gem
+
+gem "devise_token_auth" # 追加 token認証確認する gem
 gem 'devise' #追加 「ユーザーの新規登録 / ログイン / ログアウト」の gem
 
 gem 'rack-cors', :require => 'rack/cors' # 追加 オリジン間リソース共有Cross-Origin Resource Sharing (CORS) の gem

@@ -27,7 +27,8 @@ gem "turbolinks", "~> 5"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "active_model_serializers", "~> 0.10.0" # 追加
-gem "devise_token_auth" # 追加
+gem "devise_token_auth" # 追加 token認証する gem
+gem "devise" # 「ユーザーの新規登録 / ログイン / ログアウト」の gem
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,7 +40,6 @@ group :development, :test do
   gem 'factory_bot_rails' # 追加
   gem 'faker' # 追加
   gem 'rspec-rails' # 追加
-  gem 'devise_token_auth' # 追加 「ユーザーの新規登録 / ログイン / ログアウト」の実装
 end
 
 group :development do

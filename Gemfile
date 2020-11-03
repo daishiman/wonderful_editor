@@ -24,7 +24,7 @@ gem "turbolinks", "~> 5"
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", ">= 1.4.2", require: false
+gem "bootsnap", ">= 1.4.2", :require => false
 
 gem "active_model_serializers", "~> 0.10.0" # 追加
 gem "devise_token_auth" # 追加 token認証する gem
@@ -53,4 +53,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", :platforms => [:mingw, :mswin, :x64_mingw, :jruby]

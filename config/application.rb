@@ -30,11 +30,11 @@ module WonderfulEditor
       g.stylesheets false # スタイルシート(CSS)を作成しない
       g.helper false # helper を作成しない
       g.test_framework :rspec, # テストファイルを作成する
-                       view_specs: false, # view の spec を作成しない
-                       routing_specs: false, # routing の spec を作成しない
-                       helper_specs: false, # helper の spec を作成しない
-                       controller_specs: false, # contoller の spec を作成しない
-                       request_specs: true # request の spec を作成する
+                       :view_specs => false, # view の spec を作成しない
+                       :routing_specs => false, # routing の spec を作成しない
+                       :helper_specs => false, # helper の spec を作成しない
+                       :controller_specs => false, # contoller の spec を作成しない
+                       :request_specs => true # request の spec を作成する
     end
 
     config.api_only = true # 既存のアプリケーションを API 専用に変える

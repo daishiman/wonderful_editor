@@ -6,7 +6,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  article_id :integer
-#  user_id    :integer
 #
 FactoryBot.define do
   factory :article_like do

@@ -29,3 +29,6 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+
+Metrics/BlockLength:
+  Max: 50

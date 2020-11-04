@@ -12,6 +12,12 @@ require:
 AllCops:
   TargetRubyVersion: 2.6
   NewCops: enable
+  Exclude:
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'bin/bundle'
 
 Lint/RaiseException:
   Enabled: true

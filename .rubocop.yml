@@ -31,4 +31,4 @@ Style/HashTransformValues:
   Enabled: true
 
 Metrics/BlockLength:
-  Max: 50
+  Max: 60

@@ -32,6 +32,11 @@
 #
 class User < ActiveRecord::Base
   extend Devise::Models
+
+  validates :uid, :presence => true, :uniqueness => { :case_sensitive => false, :scope => [:article_id] }
+  validates :email, :presence => true, :uniqueness => { :case_sensitive => false }, :conrirmation => true
+  validates :token, :presence => true, :uniqueness => { :case_sensitive => false }, :conrirmation => true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

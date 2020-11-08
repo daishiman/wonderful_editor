@@ -34,31 +34,31 @@ RSpec.describe "User", :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
   context "user の情報が全て揃っているとき" do
+    let(:user) { build(:user) }
     it "user が作成できる" do
-      user = build(:user)
       expect(user).to be_valid
     end
   end
 
   context "name が記載されていないとき" do
+    let(:user) { build(:user, :name => nil) }
     it "user が作成できない" do
-      user = build(:user, :name => nil)   # build はカラムの値を決めてレコードを作成したいときに使用する
       expect(user).to be_invalid
       expect(user.errors.details[:name][0][:error]).to eq :blank
     end
   end
 
   context "email が記載されていいないとき" do
+    let(:user) { build(:user, :email => nil) }
     it "user が作成できない" do
-      user = build(:user, :email => nil)
       expect(user).to be_invalid
       expect(user.errors.details[:email][0][:error]).to eq :blank
     end
   end
 
   context "password が記載されていないとき" do
+    let(:user) { build(:user, :password => nil) }
     it "user が作成できない" do
-      user = build(:user, :password => nil)
       expect(user).to be_invalid
       expect(user.errors.details[:password][0][:error]).to eq :blank
     end

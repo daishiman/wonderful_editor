@@ -21,6 +21,6 @@ FactoryBot.define do
   factory :article do
     title { Faker::Book.title }
     body { Faker::Quote.yoda }
-    user_id { Faker::Number }
+    association :user, :factory => :user
   end
 end

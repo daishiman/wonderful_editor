@@ -23,30 +23,38 @@ RSpec.describe Article, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
   context "すべて記載しているとき" do
-    let(:article) { create(:article) }
+    let(:article) { build(:article, :user_id => user.id) }
+    let(:user) { create(:user) }
+    let(:user_id) { user.id }
     it "article が作成できる" do
       expect(article).to be_valid
     end
   end
 
-  # context "body が記載されていないとき" do
-  #   binding.pry
-  #   let(:article) { build(:article, :body => nil) }
-  #   it "article が作成できない" do
-  #     expect(article).to be_invalid
-  #     binding.pry
-  #   end
-  # end
+  context "body が記載されていないとき" do
+    let(:article) { build(:article, :body => nil, :user_id => user.id) }
+    let(:user) { create(:user) }
+    it "article が作成できない" do
+      article.valid?
+      expect(article.errors.details[:body][0][:error]).to eq :blank
+    end
+  end
 
-  # context "title が記載されていないとき" do
-  #   it "article が作成できない" do
+  context "title が記載されていないとき" do
+    let(:article) { build(:article, :title => nil, :user_id => user.id) }
+    let(:user) { create(:user) }
+    it "article が作成できない" do
+      article.valid?
+      expect(article.errors.details[:title][0][:error]).to eq :blank
+    end
+  end
 
-  #   end
-  # end
-
-  # context "user_id が記載されていないとき" do
-  #   it "article が作成できない" do
-
-  #   end
-  # end
+  context "user_id が記載されていないとき" do
+    let(:article) { build(:article) }
+    let(:user) { create(:user) }
+    it "article が作成できない" do
+      article.valid?
+      expect(article.errors.details[:user_id][0][:error]).to eq :blank
+    end
+  end
 end

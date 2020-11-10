@@ -42,24 +42,27 @@ RSpec.describe "User", :type => :model do
 
   context "name が記載されていないとき" do
     let(:user) { build(:user, :name => nil) }
+    before { user.valid? }
+
     it "user が作成できない" do
-      expect(user).to be_invalid
       expect(user.errors.details[:name][0][:error]).to eq :blank
     end
   end
 
   context "email が記載されていいないとき" do
     let(:user) { build(:user, :email => nil) }
+    before { user.valid? }
+
     it "user が作成できない" do
-      expect(user).to be_invalid
       expect(user.errors.details[:email][0][:error]).to eq :blank
     end
   end
 
   context "password が記載されていないとき" do
     let(:user) { build(:user, :password => nil) }
+    before { user.valid? }
+
     it "user が作成できない" do
-      expect(user).to be_invalid
       expect(user.errors.details[:password][0][:error]).to eq :blank
     end
   end

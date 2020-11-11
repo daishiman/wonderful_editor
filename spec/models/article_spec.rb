@@ -25,7 +25,6 @@ RSpec.describe Article, :type => :model do
   context "すべて記載しているとき" do
     let(:article) { build(:article, :user_id => user.id) }
     let(:user) { create(:user) }
-    let(:user_id) { user.id }
     it "article が作成できる" do
       expect(article).to be_valid
     end

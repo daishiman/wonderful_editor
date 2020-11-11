@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :article_like do
-    user_id { 1 }
-    article_id { 1 }
+    association :user, :factory => :user
+    association :article, :factory => :article
   end
 end

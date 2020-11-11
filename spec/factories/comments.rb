@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :comment do
-    body { "MyText" }
-    users_id { 1 }
-    articles_id { 1 }
+    body { Faker::Quote.yoda }
+    association :user, :factory => :user
+    association :article, :factory => :article
   end
 end

@@ -34,6 +34,7 @@ module WonderfulEditor
                        :routing_specs => false, # routing の spec を作成しない
                        :helper_specs => false, # helper の spec を作成しない
                        :controller_specs => false, # contoller の spec を作成しない
+                       :fixtures => true, # factory_bot のファイルを作成する
                        :request_specs => true # request の spec を作成する
     end
 

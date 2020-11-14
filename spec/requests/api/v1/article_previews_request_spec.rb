@@ -1,4 +1,5 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Api::V1::ArticlePreviews", :type => :request do
+RSpec.describe "Api::V1::ArticlePreviews", type: :request do
+
 end

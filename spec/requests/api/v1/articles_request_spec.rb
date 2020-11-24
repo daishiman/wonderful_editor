@@ -10,7 +10,7 @@ RSpec.describe "Api::V1::Articles", :type => :request do
     let!(:article2) { create(:article, :updated_at => 13.days.ago) }
     let!(:article3) { create(:article, :updated_at => 5.days.ago) }
 
-    fit "article_preview が習得できる" do
+    it "article_preview が習得できる" do
       subject
 
       # 作成した article のデータが全て返ってきているか（ article の作成時間をずらしたものを3つ作ってそれが3つとも返ってくるか）
@@ -30,9 +30,43 @@ RSpec.describe "Api::V1::Articles", :type => :request do
       expect(article_serializer.to_h[:user][:name]).to eq(res[0]["user"]["name"])
       expect(article_serializer.to_h[:user][:email]).to eq(res[0]["user"]["email"])
 
-      binding.pry
       # ステータスコードが 200 であること
       expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "GET /articles/:id" do
+    subject { get(api_v1_article_path(article_id)) }
+
+    let!(:user) { create(:user) }
+    let!(:article) { create(:article, :user_id => user.id) }
+    let!(:article_id) { article.id }
+
+    context "指定した article_id のユーザーが存在するとき" do
+      it "そのユーザーのレコードが取得できる" do
+        subject
+        res = JSON.parse(response.body)
+
+        expect(res["id"]).to eq article.id
+        expect(res["title"]).to eq article.title
+        expect(res["body"]).to eq article.body
+        expect(res["updated_at"]).to be_present
+
+        # article_serializer = Api::V1::ArticlePreviewSerializer.new(article)
+        # expect(res["updated_at"].in_time_zone.to_s).to eq(article_serializer.to_h[:updated_at].in_time_zone.to_s)
+
+        expect(res["user"]["id"]).to eq article.user.id
+        expect(res["user"].keys).to eq ["id", "name", "email"]
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "指定した article_id のユーザーが存在しないとき" do
+      let(:article_id) { 10_000_000_000 }
+      it "ユーザーが見つからない" do
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 end

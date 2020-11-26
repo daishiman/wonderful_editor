@@ -13,8 +13,8 @@ module Api::V1
     end
 
     def create
-      @article = current_user.articles.create!(article_params)
-      render json: @article, serializer: Api::V1::ArticleSerializer
+      article = current_user.articles.create!(article_params)
+      render :json => article, :serializer => Api::V1::ArticleSerializer
     end
 
     private
@@ -22,6 +22,5 @@ module Api::V1
       def article_params
         params.require(:article).permit(:title, :body)
       end
-
   end
 end

@@ -69,4 +69,32 @@ RSpec.describe "Api::V1::Articles", :type => :request do
       end
     end
   end
+
+  describe "POST /articles" do
+    subject { post(api_v1_articles_path, :params => params) }
+
+    context "適切なパラメータを送信したとき" do
+      let!(:current_user) { create(:user) }
+      let!(:params) { { :article => attributes_for(:article) } }
+      before { allow_any_instance_of(Api::V1::BaseApiController).to receive(:current_user).and_return(current_user) }
+
+      it " article レコードが作成できる" do
+        # expect { subject }.to change { Article.count }.by(1)
+        expect { subject }.to change { Article.where(:user_id => current_user.id).count }.by(1)
+        res = JSON.parse(response.body)
+        expect(res["title"]).to eq params[:article][:title]
+        expect(res["body"]).to eq params[:article][:body]
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "不適切なパラメータを送信したとき" do
+      subject { post(api_v1_articles_path, :params => params) }
+
+      let(:params) { attributes_for(:article) }
+      it " aticle レコードが作成できない" do
+        expect { subject }.to raise_error(ActionController::RoutingError)
+      end
+    end
+  end
 end

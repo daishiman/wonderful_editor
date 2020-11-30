@@ -14,7 +14,7 @@ module Api::V1
 
     def create
       article = current_user.articles.create!(article_params)
-      render :json => article, :serializer => Api::V1::ArticleSerializer
+      render :json => article
     end
 
     private

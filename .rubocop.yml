@@ -33,5 +33,5 @@ Style/HashTransformValues:
 Metrics/BlockLength:
   Max: 60
 
-# RSpec/MultipleExpectations:
-#   Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false

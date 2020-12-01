@@ -19,8 +19,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class ArticleLike < ApplicationRecord
-  belongs_to :articles
   belongs_to :user
+  belongs_to :article
 
   validates :article_id, :presence => true
   validates :user_id, :presence => true

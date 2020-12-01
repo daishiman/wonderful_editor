@@ -24,10 +24,19 @@ module Api::V1
       render :json => article
     end
 
+    def destroy
+      article = current_user.articles.find(params[:id])
+      article.destroy!
+    end
+
     private
 
       def article_params
         params.require(:article).permit(:title, :body)
       end
+
+    # def set_article
+    #   article = current_user.articles.find(params[:id])
+    # end
   end
 end

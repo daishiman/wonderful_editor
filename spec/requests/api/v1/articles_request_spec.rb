@@ -126,10 +126,9 @@ RSpec.describe "Api::V1::Articles", :type => :request do
 
     context "自分の記事のレコードを削除するとき" do
       let!(:article) { create(:article, :user => current_user) }
-      fit "記事を削除できる" do
+      it "記事を削除できる" do
         expect { subject }.to change { Article.count }.by(-1)
         expect(response).to have_http_status(:no_content)
-        binding.pry
       end
     end
 

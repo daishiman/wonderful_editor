@@ -22,7 +22,7 @@
 require "rails_helper"
 
 RSpec.describe Comment, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
 
   context "すべて記載しているとき" do
     let(:comment) { create(:comment, :user_id => user.id, :article_id => article.id) }

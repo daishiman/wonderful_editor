@@ -31,7 +31,7 @@
 require "rails_helper"
 
 RSpec.describe "User", :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
 
   context "user の情報が全て揃っているとき" do
     let(:user) { build(:user) }

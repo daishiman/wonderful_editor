@@ -20,7 +20,7 @@
 require "rails_helper"
 
 RSpec.describe Article, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
 
   context "すべて記載しているとき" do
     let(:article) { build(:article, :user_id => user.id) }

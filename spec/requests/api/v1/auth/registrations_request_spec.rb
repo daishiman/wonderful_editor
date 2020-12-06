@@ -1,9 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "Api::V1::Auth::Registrations", type: :request do
+RSpec.describe "Api::V1::Auth::Registrations", :type => :request do
   describe "POST /api_v1_auth_registration" do
-    subject { post(api_v1_user_registration_path, params: params) }
-    fcontext "登録情報が揃っているとき" do
+    subject { post(api_v1_user_registration_path, :params => params) }
+
+    context "登録情報が揃っているとき" do
       let(:params) { attributes_for(:user) }
 
       it "新規登録できる" do
@@ -20,13 +21,12 @@ RSpec.describe "Api::V1::Auth::Registrations", type: :request do
         expect(res_header).to include "uid"
         expect(res_header).to include "token-type"
 
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
-
     end
 
-    fcontext "name が存在しないとき" do
-      let(:params) { attributes_for(:user, name: nil) }
+    context "name が存在しないとき" do
+      let(:params) { attributes_for(:user, :name => nil) }
 
       it "エラーする" do
         expect { subject }.to change { User.count }.by(0)
@@ -36,8 +36,8 @@ RSpec.describe "Api::V1::Auth::Registrations", type: :request do
       end
     end
 
-    fcontext "email が存在しないとき" do
-      let(:params) { attributes_for(:user, email: nil) }
+    context "email が存在しないとき" do
+      let(:params) { attributes_for(:user, :email => nil) }
 
       it "エラーする" do
         expect { subject }.to change { User.count }.by(0)
@@ -47,8 +47,8 @@ RSpec.describe "Api::V1::Auth::Registrations", type: :request do
       end
     end
 
-    fcontext "password が存在しないとき" do
-      let(:params) { attributes_for(:user, password: nil) }
+    context "password が存在しないとき" do
+      let(:params) { attributes_for(:user, :password => nil) }
 
       it "エラーする" do
         expect { subject }.to change { User.count }.by(0)
@@ -57,7 +57,5 @@ RSpec.describe "Api::V1::Auth::Registrations", type: :request do
         expect(res["errors"]["password"]).to include "can't be blank"
       end
     end
-
-
   end
 end

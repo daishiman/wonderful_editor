@@ -5,7 +5,7 @@ DeviseTokenAuth.setup do |config|
   # client is responsible for keeping track of the changing tokens. Change
   # this to false to prevent the Authorization header from changing after
   # each request.
-  config.change_headers_on_each_request = false #リクエストごとにtokenを新しくする必要がない、という設定
+  config.change_headers_on_each_request = false # リクエストごとにtokenを新しくする必要がない、という設定
 
   # By default, users will need to re-authenticate after 2 weeks. This setting
   # determines how long tokens will remain valid after they are issued.
@@ -43,11 +43,11 @@ DeviseTokenAuth.setup do |config|
 
   # Makes it possible to change the headers names
   # 認証用ヘッダーの名前の定義です
-  config.headers_names = {:'access-token' => 'access-token',
-                         :'client' => 'client',
-                         :'expiry' => 'expiry',
-                         :'uid' => 'uid',
-                         :'token-type' => 'token-type' }
+  config.headers_names = { :'access-token' => "access-token",
+                           :client => "client",
+                           :expiry => "expiry",
+                           :uid => "uid",
+                           :'token-type' => "token-type" }
 
   # By default, only Bearer Token authentication is implemented out of the box.
   # If, however, you wish to integrate with legacy Devise authentication, you can

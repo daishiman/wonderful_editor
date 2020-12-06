@@ -47,6 +47,6 @@ module WonderfulEditor
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionDispatch::Flash # CSRF 対策を OFF にする
   end
 end

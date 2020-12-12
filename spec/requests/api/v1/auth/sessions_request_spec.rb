@@ -54,4 +54,32 @@ RSpec.describe "Api::V1::Auth::Sessions", :type => :request do
       end
     end
   end
+
+  describe "DELETE /api_v1_auth_sign_out" do
+    subject { delete(destroy_api_v1_user_session_path, headers: headers) }
+
+    context "ログアウトの情報を揃って送信するとき" do
+      let(:user) { create(:user) }
+      let!(:headers) { user.create_new_auth_token }
+
+      it "ログアウトできる" do
+        expect { subject }.to change { user.reload.tokens }.from(be_present).to(be_blank)
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context "ログアウト情報が揃わずに送信するとき" do
+      let!(:user) { create(:user) }
+      let!(:token) { user.create_new_auth_token }
+      let!(:headers) { token["access-token"=>"", "uid"=>"", "client"=>""] }
+      fit "ログアウトできない" do
+        subject
+        expect(response).to have_http_status(404)
+
+        res = JSON.parse(response.body)
+        expect(res["errors"]).to eq ["User was not found or was not logged in."]
+
+      end
+    end
+  end
 end

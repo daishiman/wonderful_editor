@@ -96,7 +96,6 @@ RSpec.describe "Api::V1::Articles", :type => :request do
     let!(:params) { { :article => attributes_for(:article) } }
     let!(:headers) { current_user.create_new_auth_token }
 
-
     context "自分の記事のレコードを更新するとき" do
       let(:article) { create(:article, :user => current_user) }
       it "記事を更新できる" do
@@ -124,7 +123,6 @@ RSpec.describe "Api::V1::Articles", :type => :request do
     let!(:current_user) { create(:user) }
     let(:article_id) { article.id }
     let!(:headers) { current_user.create_new_auth_token }
-
 
     context "自分の記事のレコードを削除するとき" do
       let!(:article) { create(:article, :user => current_user) }

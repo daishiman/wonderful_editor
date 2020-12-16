@@ -33,6 +33,6 @@ FactoryBot.define do
     name { Faker::Name.name }
     sequence(:uid) {|n| "#{n}_#{Faker::Internet.username}" }
     sequence(:email) {|n| "#{n}_#{Faker::Internet.email}" }
-    sequence(:password) {|n| "#{n}_#{Faker::Internet.password(:min_length => 6, :max_length => 128)}" }
+    sequence(:password) {|n| "#{n}_#{Faker::Internet.password(:min_length => 6, :max_length => 120)}" }
   end
 end

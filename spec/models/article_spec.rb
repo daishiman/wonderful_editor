@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :text
+#  status     :string           default("draft")
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -22,11 +23,30 @@ require "rails_helper"
 RSpec.describe Article, :type => :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  context "すべて記載しているとき" do
+  context "タイトルと本文が入力されているとき" do
     let(:article) { build(:article, :user_id => user.id) }
     let(:user) { create(:user) }
-    it "article が作成できる" do
+    it "下書きの状態の記事がかける" do
       expect(article).to be_valid
+      expect(article.status).to eq "draft"
+    end
+  end
+
+  context "status が draft のとき" do
+    let(:article) { build(:article, :draft, :user_id => user.id) }
+    let(:user) { create(:user) }
+    it "記事が draft 状態で作成される" do
+      expect(article).to be_valid
+      expect(article.status).to eq "draft"
+    end
+  end
+
+  context "status が published のとき" do
+    let(:article) { build(:article, :published, :user_id => user.id) }
+    let(:user) { create(:user) }
+    it "記事が publisehed 状態で作成される" do
+      expect(article).to be_valid
+      expect(article.status).to eq "published"
     end
   end
 

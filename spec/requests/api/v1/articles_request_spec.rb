@@ -118,7 +118,7 @@ RSpec.describe "Api::V1::Articles", :type => :request do
 
     context "不適切な status のパラメータを送信したとき" do
       let!(:current_user) { create(:user) }
-      let!(:params) { { :article => attributes_for(:article, status: :foo) } }
+      let!(:params) { { :article => attributes_for(:article, :status => :foo) } }
       let!(:headers) { current_user.create_new_auth_token }
 
       it "エラーになる" do
@@ -155,7 +155,7 @@ RSpec.describe "Api::V1::Articles", :type => :request do
     end
 
     context "不適切な status のレコードを更新するとき" do
-      let(:article) { create(:article, status: :foo, :user => current_user) }
+      let(:article) { create(:article, :status => :foo, :user => current_user) }
       it "エラーになる" do
         expect { subject }.to raise_error ArgumentError
       end

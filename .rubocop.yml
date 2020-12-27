@@ -35,3 +35,4 @@ Metrics/BlockLength:
 
 RSpec/MultipleExpectations:
   Enabled: false
+  Max: true

@@ -24,8 +24,7 @@ RSpec.describe Article, :type => :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
   context "タイトルと本文が入力されているとき" do
-    let(:article) { build(:article, :user_id => user.id) }
-    let(:user) { create(:user) }
+    let(:article) { build(:article) }
     it "下書きの状態の記事がかける" do
       expect(article).to be_valid
       expect(article.status).to eq "draft"
@@ -51,11 +50,11 @@ RSpec.describe Article, :type => :model do
   end
 
   context "body が記載されていないとき" do
-    let(:article) { build(:article, :body => nil, :user_id => user.id) }
+    let(:article) { build(:article, :body => :blank, :user_id => user.id) }
     let(:user) { create(:user) }
     it "article が作成できない" do
       article.valid?
-      expect(article.errors.details[:body][0][:error]).to eq :blank
+      expect(article.errors.details[:body][0]).to eq nil
     end
   end
 
@@ -64,7 +63,7 @@ RSpec.describe Article, :type => :model do
     let(:user) { create(:user) }
     it "article が作成できない" do
       article.valid?
-      expect(article.errors.details[:title][0][:error]).to eq :blank
+      expect(article.errors.details[:title][0]).to eq nil
     end
   end
 
@@ -73,7 +72,7 @@ RSpec.describe Article, :type => :model do
     let(:user) { create(:user) }
     it "article が作成できない" do
       article.valid?
-      expect(article.errors.details[:user_id][0][:error]).to eq :blank
+      expect(article.errors.details[:user_id][0]).to eq nil
     end
   end
 end

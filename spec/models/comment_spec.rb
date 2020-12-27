@@ -39,7 +39,7 @@ RSpec.describe Comment, :type => :model do
     let(:article) { create(:article, :user_id => user.id) }
     it " comment が作成できない" do
       comment.valid?
-      expect(comment.errors.details[:user_id][0][:error]).to eq :blank
+      expect(comment.errors.details[:user_id][0]).to eq nil
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Comment, :type => :model do
     let(:article) { create(:article, :user_id => user.id) }
     it " comment が作成できない" do
       comment.valid?
-      expect(comment.errors.details[:article_id][0][:error]).to eq :blank
+      expect(comment.errors.details[:article_id][0]).to eq nil
     end
   end
 end

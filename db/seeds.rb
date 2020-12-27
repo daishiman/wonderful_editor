@@ -29,14 +29,14 @@ user2.articles.create!(
   :status => "draft",
 )
 
-user1.articles.create!(
-  :title => "title3",
-  :body => "body3",
-  :status => "published",
-)
+# user1.articles.create!(
+#   :title => "title3",
+#   :body => "body3",
+#   :status => "published",
+# )
 
-user2.articles.create!(
-  :title => "title4",
-  :body => "body4",
-  :status => "published",
-)
+# user2.articles.create!(
+#   :title => "title4",
+#   :body => "body4",
+#   :status => "published",
+# )

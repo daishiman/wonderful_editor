@@ -150,6 +150,7 @@ RSpec.describe "Api::V1::Articles", :type => :request do
         expect { subject }.to change { article.reload.title }.from(article.title).to(params[:article][:title]) &
                               change { article.reload.body }.from(article.body).to(params[:article][:body]) &
                               not_change { article.created_at }
+
         expect(response).to have_http_status(:ok)
       end
     end
